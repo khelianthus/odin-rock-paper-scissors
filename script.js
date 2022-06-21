@@ -1,14 +1,3 @@
-function playerPlay() {
-
-    const choice = prompt("Choose: rock, paper or scissors!").toLowerCase();
-    return choice;
-}
-
-
-//Create and saves players selection
-//const playerSelection = playerPlay(); 
-//Stores the computers choice from fucntion computerPlay
-//const computerSelection = computerPlay();
 //Stores all valid choices for the game
 const choices = [
     "rock",
@@ -16,7 +5,19 @@ const choices = [
     "scissor"
 ]
 
-//Randomize the computers choice, returns it to us.
+function playerPlay() {
+
+    const choice = prompt("Choose: rock, paper or scissors!").toLowerCase();
+    return choice;
+}
+
+
+//Saves players selection from function playerPlay
+const playerSelection = playerPlay(); 
+//Stores the computers choice from function computerPlay
+const computerSelection = computerPlay();
+
+//Randomize the computers choice, selects from array, returns it to us.
 function computerPlay () {
 
     //create a const, randomize an index from array
@@ -25,12 +26,13 @@ function computerPlay () {
     return choices[randomNumber];
 }
 
-//print out the randomized number from computerPlay func.
+//print out the randomized number/choices from computerPlay func.
 //console.log(computerPlay());
 
 //---TODO: Make a condition for if user put in empty string, send user back to to first alert (function)
 
 //Evaluating the users choice and computers choice and compares for result
+//---TODO: Change so code takes the choices from array instead of string
 function playRound (playerSelection, computerSelection){
 
     const tie = 3;
@@ -81,11 +83,47 @@ function playRound (playerSelection, computerSelection){
     else if (playerSelection === "scissor" && computerSelection === "scissor"){
         alert("It's a tie!");
         result = tie;
-    }
+    } 
     
     return result;
 
 }
-const playerSel = "rock";
+//Tests the computerPlay function
+/*const playerSel = "rock";
 const computerSel = computerPlay();
-console.log(playRound(playerSel, computerSel));
+console.log(playRound(playerSel, computerSel));*/
+
+function game () {
+
+    playRound(playerSelection, computerSelection);
+
+    let playWin = 0;
+    let compWin = 0;
+
+    for (let i = 0; i < 5; i++) {
+
+        if (win){
+            playWin++;
+        }
+
+        else if (lose){
+            compWin++;
+        }
+        else if (tie){
+
+        }
+     }
+
+     console.log("Score: \n Computer: " + compWin + "\nPlayer:" + playWin);
+
+     if (playWin<compWin) {
+
+    console.log("You win!");
+     }
+
+     else {
+         console.log("You lose!");
+     }
+
+
+}
