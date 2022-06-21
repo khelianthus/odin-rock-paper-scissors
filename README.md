@@ -1,2 +1,2 @@
 # odin-rock-paper-scissors
-JavaScript practise
+JavaScript practise from Odin Project: Foundations.
