@@ -4,6 +4,12 @@ const choices = [
     "paper",
     "scissor"
 ]
+const tie = 3;
+const win = 2;
+const lose = 1;
+
+//Stores game-result
+
 
 function playerPlay() {
 
@@ -13,9 +19,9 @@ function playerPlay() {
 
 
 //Saves players selection from function playerPlay
-const playerSelection = playerPlay(); 
+//const playerSelection = playerPlay(); 
 //Stores the computers choice from function computerPlay
-const computerSelection = computerPlay();
+//const computerSelection = computerPlay();
 
 //Randomize the computers choice, selects from array, returns it to us.
 function computerPlay () {
@@ -35,9 +41,7 @@ function computerPlay () {
 //---TODO: Change so code takes the choices from array instead of string
 function playRound (playerSelection, computerSelection){
 
-    const tie = 3;
-    const win = 2;
-    const lose = 1;
+
     let result = 0;
 
     if (playerSelection === "rock" && computerSelection === "paper"){
@@ -95,35 +99,39 @@ console.log(playRound(playerSel, computerSel));*/
 
 function game () {
 
-    playRound(playerSelection, computerSelection);
-
     let playWin = 0;
     let compWin = 0;
 
     for (let i = 0; i < 5; i++) {
 
-        if (win){
+        let result = playRound(playerPlay(), computerPlay());
+
+        if (result === win){
             playWin++;
         }
 
-        else if (lose){
+        else if (result === lose){
             compWin++;
         }
-        else if (tie){
-
+        else if (result === tie){
+            continue;
         }
      }
 
-     console.log("Score: \n Computer: " + compWin + "\nPlayer:" + playWin);
+     console.log("Score: \nComputer: " + compWin + "\nPlayer: " + playWin);
 
-     if (playWin<compWin) {
+     if (playWin>compWin) {
 
     console.log("You win!");
+     }
+
+     else if(playWin === compWin){
+         console.log("It's a tie!");
      }
 
      else {
          console.log("You lose!");
      }
-
-
 }
+
+game();
